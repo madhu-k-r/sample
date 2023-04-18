@@ -12,10 +12,11 @@
 
 $dbhost = getenv("MYSQL_SERVICE_HOST");
 $dbport = getenv("MYSQL_SERVICE_PORT");
+$dbuser = getenv("databaseuser");
+$dbpwd = getenv("databasepassword");
+$dbname = getenv("databasename");
 
-
-
-		$conn = new mysqli($dbhost, 'root', '', 'sample_db');
+		$conn = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 		
 		// Check connection
 		if($conn === false){
@@ -30,7 +31,8 @@ $dbport = getenv("MYSQL_SERVICE_PORT");
 		
 		// Performing insert query execution
 		// here our table name is college
-		$sql = "INSERT INTO sample_db VALUES ('$name','$age','$companyname')";
+		$sql = "INSERT INTO sample_db VALUES ('$name',
+			'$age','companyname')";
 		
 		if(mysqli_query($conn, $sql)){
 			echo "<h3>Data stored in a database successfully.</h3>";
