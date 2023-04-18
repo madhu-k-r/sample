@@ -14,9 +14,9 @@ $dbhost = getenv("MYSQL_SERVICE_HOST");
 $dbport = getenv("MYSQL_SERVICE_PORT");
 $dbuser = getenv("databaseuser");
 $dbpwd = getenv("databasepassword");
-$dbname = getenv("databasename");
 
-		$conn = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
+
+		$conn = new mysqli($dbhost, $dbuser, $dbpwd, 'sample_db');
 		
 		// Check connection
 		if($conn === false){
