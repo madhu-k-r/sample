@@ -30,8 +30,7 @@ $dbport = getenv("MYSQL_SERVICE_PORT");
 		
 		// Performing insert query execution
 		// here our table name is college
-		$sql = "INSERT INTO sample_db VALUES ('$name',
-			'$age','companyname')";
+		$sql = "INSERT INTO sample_db VALUES ('$name','$age','$companyname')";
 		
 		if(mysqli_query($conn, $sql)){
 			echo "<h3>Data stored in a database successfully.</h3>";
