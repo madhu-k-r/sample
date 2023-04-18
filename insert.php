@@ -12,11 +12,10 @@
 
 $dbhost = getenv("MYSQL_SERVICE_HOST");
 $dbport = getenv("MYSQL_SERVICE_PORT");
-$dbuser = getenv("databaseuser");
-$dbpwd = getenv("databasepassword");
 
 
-		$conn = new mysqli($dbhost, $dbuser, $dbpwd, 'sample_db');
+
+		$conn = new mysqli($dbhost, 'root', 'Welcome@123', 'sample_db');
 		
 		// Check connection
 		if($conn === false){
