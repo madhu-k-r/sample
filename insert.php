@@ -10,11 +10,13 @@
 	<center>
 		<?php
 
-		// servername => localhost
-		// username => root
-		// password => empty
-		// database name => staff
-		$conn = mysqli_connect("localhost", "root", "", "sample");
+$dbhost = getenv("MYSQL_SERVICE_HOST");
+$dbport = getenv("MYSQL_SERVICE_PORT");
+$dbuser = getenv("databaseuser");
+$dbpwd = getenv("databasepassword");
+$dbname = getenv("databasename");
+
+		$conn = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 		
 		// Check connection
 		if($conn === false){
