@@ -24,7 +24,7 @@ if (mysqli_connect_errno()) {
 } 
 
 $sql = "SELECT * FROM sample_db ORDER BY name";
-$result = mysqli_query($con, $sql);
+$result = mysqli_query($conn, $sql);
 
 // Fetch all
 mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -32,7 +32,7 @@ mysqli_fetch_all($result, MYSQLI_ASSOC);
 // Free result set
 mysqli_free_result($result);
 
-mysqli_close($con);
+mysqli_close($conn);
 ?>
 	</center>
 </body>
