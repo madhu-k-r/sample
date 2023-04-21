@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 }
 
 // SQL QUERY
-$result = "SELECT * FROM `sample_db Details`;";
+$result = "SELECT * FROM `sample_db`;";
 if (mysqli_num_rows($result) > 0) {
 ?>
   <table>
