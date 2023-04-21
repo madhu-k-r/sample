@@ -17,28 +17,36 @@ $dbpwd = getenv("databasepassword");
 $dbname = getenv("databasename");
 
 		$conn = mysqli_connect($dbhost, "$dbuser", "$dbpwd","sample_db", $dbport);
-		
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  exit();
-} 
 
-$sql = "SELECT * FROM sample_db ORDER BY name";
-$result = mysqli_query($conn, $sql);
+// GET CONNECTION ERRORS
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
 
-// Fetch all
-mysqli_fetch_all($result, MYSQLI_ASSOC);
+// SQL QUERY
+$query = "SELECT * FROM `sample_db Details`;";
 
-// Free result set
-mysqli_free_result($result);
+// FETCHING DATA FROM DATABASE
+$result = $conn->query($query);
 
-mysqli_close($conn);
+	if ($result->num_rows > 0)
+	{
+		// OUTPUT DATA OF EACH ROW
+		while($row = $result->fetch_assoc())
+		{
+			echo "Name: " .
+				$row["name"]. " - age: " .
+				$row["age"]. " | Company Name: " .
+				$row["companyname"]. "<br>";
+		}
+	}
+	else {
+		echo "0 results";
+	}
+
+$conn->close();
+
 ?>
 	</center>
 </body>
-
 </html>
-
-
-
-
