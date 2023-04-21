@@ -17,36 +17,47 @@ $dbpwd = getenv("databasepassword");
 $dbname = getenv("databasename");
 
 		$conn = mysqli_connect($dbhost, "$dbuser", "$dbpwd","sample_db", $dbport);
-
 // GET CONNECTION ERRORS
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
 // SQL QUERY
-$query = "SELECT * FROM `sample_db Details`;";
-
-// FETCHING DATA FROM DATABASE
-$result = $conn->query($query);
-
-	if ($result->num_rows > 0)
-	{
-		// OUTPUT DATA OF EACH ROW
-		while($row = $result->fetch_assoc())
-		{
-			echo "Name: " .
-				$row["name"]. " - age: " .
-				$row["age"]. " | Company Name: " .
-				$row["companyname"]. "<br>";
-		}
-	}
-	else {
-		echo "0 results";
-	}
-
+$result = "SELECT * FROM `sample_db Details`;";
+if (mysqli_num_rows($result) > 0) {
+?>
+  <table>
+  
+  <tr>
+    <td>Name</td>
+    <td>Age</td>
+    <td>Company Name</td>
+  </tr>
+<?php
+$i=0;
+while($row = mysqli_fetch_array($result)) {
+?>
+<tr>
+    <td><?php echo $row["name"]; ?></td>
+    <td><?php echo $row["age"]; ?></td>
+    <td><?php echo $row["companyname"]; ?></td>
+</tr>
+<?php
+$i++;
+}
+?>
+</table>
+ <?php
+}
+else{
+    echo "No result found";
+}
+?>
 $conn->close();
 
 ?>
+
 	</center>
 </body>
+
 </html>
