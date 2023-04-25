@@ -14,7 +14,7 @@
 <tr><td>Age:</td><td> <input type="number" name="age"required="required" class="input1"/></td></tr>  
 <tr><td>Company Name:</td><td> <input type="text" name="companyname" required="required" class="input1"/></td></tr>  
 </table>  
-<a href="fetch.php"><input type="button" value="Fetch"/></a>
+<a href="fetch.php"><input type="button" value="Fetch" class="Fetch"/></a>
 <input type="reset" value="Reset" class="reset" />
 <input type="submit" value="Submit" class="submit"/>  
 </form>
